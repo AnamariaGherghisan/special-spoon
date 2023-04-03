@@ -1,0 +1,128 @@
+/* Media Queries Example */
+
+:root{
+
+    font-size: 16px;
+
+    --bgColor: #000000;
+    --onBg: #FFFFFF;
+
+    --accentColor: #ff0066;
+    --trasparentAccentColor: hsla(336, 100%, 50%, 0.20);
+    --onAccent: #FFFFFF;
+
+    --sizeXs: 0.5rem;
+    --sizeSm: calc(var(--sizeXs) * 1.5);
+    --sizeMd: calc(var(--sizeSm) * 1.5);
+    --sizeLg: calc(var(--sizeMd) * 1.5);
+    --sizeXl: calc(var(--sizeLg) * 1.5);
+
+}
+
+* {
+    /* CSS Reset for all elements */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bgColor);
+    color: var(--onBg);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--accentColor);
+    color: var(--onAccent);
+}
+
+header h1{
+    /* Styles for logo */
+    font-size: var(--sizeMd);
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    list-style-type: none;
+}
+
+header nav ul li {
+    padding: var(--sizeMd);
+}
+
+header nav ul li a,
+header nav ul li a:active,
+header nav ul li a:visited,
+header nav ul li a:hover{
+    color: var(--onAccent);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: var(--sizeMd);
+    padding: var(--sizeXs);
+    border-radius: var(--sizeXs);
+}
+
+header nav ul li a:hover{
+    background-color: var(--bgColor);
+    color: var(--onBg);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: var(--sizeSm);
+    padding: var(--sizeSm);
+}
+
+main section{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100svh - var(--sizeMd));
+    justify-content: center;
+    padding: var(--sizeXs);
+}
+
+main section:nth-child(odd){
+    background-color: var(--trasparentAccentColor);
+}
+main section:nth-child(even){
+    background-color: var(--onAccent);
+    color: var(--accentColor);
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    padding: var(--sizeSm);
+}
+
+/* FOR DESKTOPS */
+@media screen and (min-width: 601px) {
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--sizeSm);
+    }
+    header nav ul{
+        flex-direction: row;
+    }
+    main section{
+        padding: var(--sizeXl);
+    }
+    footer{
+        gap: var(--sizeLg);
+        flex-direction: row;
+    }
+}
+
