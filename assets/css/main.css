@@ -4,11 +4,11 @@
 
     font-size: 16px;
 
-    --bgColor: #000000;
-    --onBg: #FFFFFF;
+    --bgColor: #fff;
+    --onBg: #000;
 
-    --accentColor: #ff0066;
-    --trasparentAccentColor: hsla(336, 100%, 50%, 0.20);
+    --accentColor: #014470;
+    --trasparentAccentColor: hsla(226, 100%, 50%, 0.367);
     --onAccent: #FFFFFF;
 
     --sizeXs: 0.5rem;
@@ -17,9 +17,24 @@
     --sizeLg: calc(var(--sizeMd) * 1.5);
     --sizeXl: calc(var(--sizeLg) * 1.5);
 
+    --navBarWidth: clamp(200px, 20em, 20vw);
+    --mobNavBarHeight: calc(var(--sizeMd) + calc(var(--sizeSm) * 2))
+
 }
 
-* {
+
+.dark {
+
+    --bgColor: #000000;
+    --onBg: #FFFFFF;
+
+    --accentColor: #0e6ba9;
+    --trasparentAccentColor: hsla(226, 100%, 50%, 0.2);
+    --onAccent: #FFFFFF;
+
+}
+
+*:not(button) {
     /* CSS Reset for all elements */
     box-sizing: border-box;
     margin: 0;
@@ -38,8 +53,11 @@ body{
 
 header {
     display: flex;
+    position: fixed;
+    width: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: space-between;
+    justify-content: center;
     background-color: var(--accentColor);
     color: var(--onAccent);
 }
@@ -47,6 +65,9 @@ header {
 header h1{
     /* Styles for logo */
     font-size: var(--sizeMd);
+    padding: 0;
+    display: flex;
+    margin: 0;
 }
 
 header nav ul{
@@ -82,12 +103,13 @@ main{
     flex-direction: column;
     gap: var(--sizeSm);
     padding: var(--sizeSm);
+    padding-top: calc((var(--sizeSm) * 2) + var(--mobNavBarHeight));
 }
 
 main section{
     display: flex;
     flex-direction: column;
-    min-height: calc(100svh - var(--sizeMd));
+    min-height: calc(calc(100svh - (var(--sizeMd) * 2)) - var(--mobNavBarHeight));
     justify-content: center;
     padding: var(--sizeXs);
 }
@@ -106,16 +128,77 @@ footer{
     padding: var(--sizeSm);
 }
 
+.collapse:not(.show){
+    display: none;
+}
+
+.mobFlexRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sizeSm);
+}
+
+
+.navBarButton{
+    content: " ";
+    padding: var(--sizeXs);
+    background: var(--accentColor);
+    border: var(--onAccent) solid 0.001em;
+    border-radius: var(--sizeXs);
+    
+}    
+.clickable{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.333);
+    transition: filter 0.3s linear;
+    transition: box-shadow 0.3s linear;
+    transition: transform 0.3s linear;
+    transition: background 0.3s linear;
+}
+
+.clickable:hover{
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.333);
+    filter: brightness(1.1);
+    transform: scale(1.01);
+}
+
+.clickable:active{
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.333);
+    filter: brightness(0.9);
+    transform: scale(0.99);
+}
+
+.navBarButton svg {
+    display: block;
+}
+
+.menuButtonIcon{
+    fill: var(--onAccent);
+}
 /* FOR DESKTOPS */
 @media screen and (min-width: 601px) {
-    header{
+    body{
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;
+    }
+    main{
+        flex-direction: column;
+    }
+    header{
+        position: fixed;
+        height: 100svh;
+        width: var(--navBarWidth);
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         padding: var(--sizeSm);
     }
     header nav ul{
-        flex-direction: row;
+        flex-direction: column;
+    }
+    .mainWrapper{
+        padding-left: calc(var(--navBarWidth) + var(--sizeXs));
     }
     main section{
         padding: var(--sizeXl);
@@ -123,6 +206,16 @@ footer{
     footer{
         gap: var(--sizeLg);
         flex-direction: row;
+    }
+    .collapse:not(.show){
+        display: flex;
+    }
+    .mobFlexRow{
+        display: flex;
+        flex-direction: column;
+    }
+    .desktopHide{
+        display: none;
     }
 }
 
