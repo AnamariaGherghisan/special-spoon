@@ -4,11 +4,12 @@
 
     font-size: 16px;
 
+    --accentHue: 193;
     --bgColor: #fff;
     --onBg: #000;
 
-    --accentColor: hsl(204, 98%, 22%);
-    --trasparentAccentColor: hsla(204, 98%, 22%, 0.367);
+    --accentColor: hsl(var(--accentHue), 82%, 9%);
+    --trasparentAccentColor: hsla(var(--accentHue), 98%, 22%, 0.367);
     --onAccent: #FFFFFF;
 
     --sizeXs: 0.5rem;
@@ -62,12 +63,11 @@ header {
     color: var(--onAccent);
 }
 
-header h1{
-    /* Styles for logo */
-    font-size: var(--sizeMd);
-    padding: 0;
+.logo{
     display: flex;
-    margin: 0;
+    width: 3em;
+    transform: rotateY(180deg);
+    height: auto;
 }
 
 header nav ul{
@@ -194,8 +194,15 @@ footer{
         align-items: center;
         padding: var(--sizeSm);
     }
+    .logo{
+        display: flex;
+        width: calc(var(--navBarWidth) - var(--sizeXl));
+        height: auto;
+        transform: rotateY(180deg);
+        animation: dogeHover 0.3s 0.01s infinite;
+    }
     header nav ul{
-        
+
         flex-direction: column;
     }
     .mainWrapper{
@@ -217,3 +224,14 @@ footer{
     }
 }
 
+@keyframes dogeHover {
+    0%, 100% {
+        transform: rotateY(-15deg) translateY(0.5em);
+    }
+    50%{
+        transform: rotateY(0deg) translateY(0);
+    }
+    25%, 75% {
+        transform: rotateY(15deg) translateY(0);
+    }
+}
