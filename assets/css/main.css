@@ -125,7 +125,7 @@ main section:nth-child(even){
 footer{
     display: flex;
     flex-direction: column;
-    padding: var(--sizeSm);
+    padding: var(--sizeXl);
 }
 
 .collapse:not(.show){
@@ -202,10 +202,6 @@ footer{
     }
     main section{
         padding: var(--sizeXl);
-    }
-    footer{
-        gap: var(--sizeLg);
-        flex-direction: row;
     }
     .collapse:not(.show){
         display: flex;
