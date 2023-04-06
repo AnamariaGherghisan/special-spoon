@@ -7,8 +7,8 @@
     --bgColor: #fff;
     --onBg: #000;
 
-    --accentColor: #014470;
-    --trasparentAccentColor: hsla(226, 100%, 50%, 0.367);
+    --accentColor: hsl(204, 98%, 22%);
+    --trasparentAccentColor: hsla(204, 98%, 22%, 0.367);
     --onAccent: #FFFFFF;
 
     --sizeXs: 0.5rem;
@@ -28,8 +28,8 @@
     --bgColor: #000000;
     --onBg: #FFFFFF;
 
-    --accentColor: #0e6ba9;
-    --trasparentAccentColor: hsla(226, 100%, 50%, 0.2);
+    /* --accentColor: #0e6ba9;
+    --trasparentAccentColor: hsla(226, 100%, 50%, 0.2); */
     --onAccent: #FFFFFF;
 
 }
@@ -118,8 +118,8 @@ main section:nth-child(odd){
     background-color: var(--trasparentAccentColor);
 }
 main section:nth-child(even){
-    background-color: var(--onAccent);
-    color: var(--accentColor);
+    background-color: var(--accentColor);
+    color: var(--onAccent);
 }
 
 footer{
@@ -151,22 +151,19 @@ footer{
 }    
 .clickable{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.333);
-    transition: filter 0.3s linear;
-    transition: box-shadow 0.3s linear;
-    transition: transform 0.3s linear;
-    transition: background 0.3s linear;
+    transition: filter 0.3s linear, box-shadow 0.3s linear, transform 0.3s linear, background 0.3s linear;
 }
 
 .clickable:hover{
     box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.333);
     filter: brightness(1.1);
-    transform: scale(1.01);
+    transform: scale(1.001);
 }
 
 .clickable:active{
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.333);
     filter: brightness(0.9);
-    transform: scale(0.99);
+    transform: scale(1);
 }
 
 .navBarButton svg {
@@ -184,11 +181,14 @@ footer{
     }
     main{
         flex-direction: column;
+        /* reset padding for desktop, removes padding-top for desktop */
+        padding: var(--sizeSm);
     }
     header{
         position: fixed;
-        height: 100svh;
+        height: 101svh;
         width: var(--navBarWidth);
+        overflow: hidden;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -202,6 +202,7 @@ footer{
     }
     main section{
         padding: var(--sizeXl);
+        min-height: calc(100svh - (var(--sizeMd) * 2));
     }
     .collapse:not(.show){
         display: flex;
