@@ -195,6 +195,7 @@ footer{
         padding: var(--sizeSm);
     }
     header nav ul{
+        
         flex-direction: column;
     }
     .mainWrapper{
