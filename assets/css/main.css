@@ -4,11 +4,11 @@
 
     font-size: 16px;
 
-    --accentHue: 193;
+    --accentHue: 354;
     --bgColor: #fff;
     --onBg: #000;
 
-    --accentColor: hsl(var(--accentHue), 82%, 9%);
+    --accentColor: hsl(var(--accentHue), 82%, 10%);
     --trasparentAccentColor: hsla(var(--accentHue), 98%, 22%, 0.367);
     --onAccent: #FFFFFF;
 
